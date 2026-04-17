@@ -50,7 +50,7 @@ export default function CatalogCard({ car }) {
               {car.badge}
             </div>
 
-            <div className="absolute inset-x-3 bottom-3 z-20 flex gap-2 md:inset-x-4 md:bottom-4">
+            <div className="absolute inset-x-4 z-20 flex gap-2 md:inset-x-8 bottom-1">
               {car.images.map((image, index) => (
                 <button
                   key={image.src + "-pagination"}
@@ -64,7 +64,7 @@ export default function CatalogCard({ car }) {
                 >
                   <span
                     className={[
-                      "block h-[3px] rounded-full transition-all duration-200",
+                      "block h-[4px] rounded-full transition-all duration-200",
                       activeImage === index ? "bg-[#00437c]" : "bg-white/70",
                     ].join(" ")}
                   />
@@ -128,7 +128,7 @@ export default function CatalogCard({ car }) {
 
             <Link
               href="#"
-              className="mt-2.5 inline-flex min-h-10 w-full items-center justify-center rounded-[14px] border border-[#d5dfec] bg-white px-4 text-[14px] font-semibold text-[#24456f] transition hover:border-[#bccbdd] hover:bg-[#f8fbff] md:hidden"
+              className="mt-2.5 inline-flex min-h-10 w-full items-center justify-center rounded-[14px] border border-[#d5dfec] bg-[white] px-4 text-[14px] font-semibold !text-white transition hover:border-[#bccbdd] hover:bg-[#00437c] md:hidden hover:!text-[#00437c]"
             >
               Подробнее
             </Link>
@@ -136,7 +136,7 @@ export default function CatalogCard({ car }) {
 
           <Link
             href="#"
-            className="mt-4 hidden min-h-12 items-center justify-center rounded-full border border-[#d5dfec] bg-[#f8fbff] px-6 text-[16px] font-semibold text-[#24456f] transition hover:border-[#bccbdd] hover:bg-white md:inline-flex"
+            className="mt-4 hidden min-h-12 items-center justify-center rounded-full border border-[#d5dfec] bg-[#00437c] px-6 text-[16px] font-semibold !text-white transition hover:border-[#bccbdd] hover:bg-[white] md:inline-flex hover:!text-[#00437c]"
           >
             Подробнее
           </Link>
