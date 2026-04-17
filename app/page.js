@@ -2,6 +2,7 @@ import { connection } from "next/server";
 import CatalogSection from "./components/catalog-section";
 import Hero from "./components/hero";
 import Navbar from "./components/navbar";
+import PurchaseStepsSection from "./components/purchase-steps-section";
 import StockCarsSection from "./components/stock-cars-section";
 
 export default async function Home() {
@@ -13,6 +14,7 @@ export default async function Home() {
       <main>
         <Hero />
         <CatalogSection />
+        <PurchaseStepsSection />
         <StockCarsSection />
       </main>
     </>
