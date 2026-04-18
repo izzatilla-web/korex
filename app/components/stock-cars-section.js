@@ -101,7 +101,7 @@ export default function StockCarsSection() {
   }
 
   return (
-    <section className="relative overflow-hidden py-16 sm:py-20 lg:py-24">
+    <section id="stock" className="relative overflow-hidden py-16 sm:py-20 lg:py-24">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(13,94,169,0.04),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(15,118,110,0.05),transparent_24%)]" />
 
       <Wrapper className="relative">

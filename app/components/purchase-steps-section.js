@@ -47,7 +47,7 @@ const purchaseSteps = [
 
 export default function PurchaseStepsSection() {
   return (
-    <section className="relative overflow-hidden bg-white py-16 md:py-24">
+    <section id="steps" className="relative overflow-hidden bg-white py-16 md:py-24">
       <div className="absolute inset-x-0 bottom-0 h-[220px]" />
 
       <Wrapper className="relative">

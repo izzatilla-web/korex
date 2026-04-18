@@ -22,7 +22,7 @@ const catalogItems = [
 
 export default function CatalogSection() {
   return (
-    <section className="bg-white py-16 md:py-24">
+    <section id="catalogs" className="bg-white py-16 md:py-24">
       <Wrapper>
         <h2 className="text-[30px] font-semibold tracking-[-0.06em] text-[#17171d] sm:text-[50px]">
           Каталоги автомобилей
