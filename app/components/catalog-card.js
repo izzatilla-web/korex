@@ -8,7 +8,7 @@ export default function CatalogCard({ car }) {
   const [activeImage, setActiveImage] = useState(0);
 
   return (
-    <article className="group min-w-[274px] snap-start md:min-w-[340px] lg:min-w-[360px] xl:min-w-[calc((100%-24px)/3)]">
+    <article className="group min-w-[300px] snap-start md:min-w-[340px] lg:min-w-[360px] xl:min-w-[calc((100%-24px)/3)]">
       <div className="flex h-full flex-col overflow-hidden rounded-[24px] border border-[#dfe7f2] bg-white/95 transition duration-300 active:-translate-y-0.5 active:border-[#ccd8e7] md:rounded-[26px] md:hover:border-[#ccd8e7]">
         <div className={`relative overflow-hidden bg-gradient-to-b ${car.accent}`}>
           <div className="relative h-[212px] overflow-hidden rounded-t-[20px] bg-[#e6ecf3] md:h-[250px] md:rounded-t-[22px]">

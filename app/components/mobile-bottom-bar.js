@@ -1,7 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { CarFront, Grid2X2, House, PhoneCall, Route } from "lucide-react";
+import {
+  CarFront,
+  Grid2X2,
+  House,
+  MessageSquareQuote,
+  PhoneCall,
+} from "lucide-react";
 import { useEffect, useState } from "react";
 
 const navItems = [
@@ -13,10 +19,10 @@ const navItems = [
     position: "side",
   },
   {
-    id: "#steps",
-    label: "Этапы",
-    icon: Route,
-    href: "#steps",
+    id: "#reviews",
+    label: "Отзывы",
+    icon: MessageSquareQuote,
+    href: "#reviews",
     position: "side",
   },
   {
@@ -59,13 +65,15 @@ export default function MobileBottomBar() {
   return (
     <div className="pointer-events-none fixed inset-x-0 bottom-0 z-[70] px-3 pb-[calc(12px+env(safe-area-inset-bottom))] md:hidden">
       <div className="pointer-events-auto mx-auto max-w-[430px]">
-        <div className="relative rounded-[30px] border border-white/70 bg-[rgba(255,255,255,0.64)] px-3 pb-2 pt-2 shadow-[0_18px_50px_rgba(17,39,76,0.14)] backdrop-blur-2xl">
+        <div className="relative rounded-[30px] border border-white/70 bg-[rgba(255,255,255,0.82)] px-3 pb-3 pt-2 shadow-[0_18px_50px_rgba(17,39,76,0.14)] backdrop-blur-2xl">
           <div className="grid grid-cols-5 items-end gap-1">
             {navItems.map((item) => {
               const Icon = item.icon;
               const isCenter = item.position === "center";
               const isActive =
-                item.id === "tel" ? false : activeId === item.id || (activeId === "" && item.id === "#home");
+                item.id === "tel"
+                  ? false
+                  : activeId === item.id || (activeId === "" && item.id === "#home");
 
               const content = (
                 <>
@@ -85,12 +93,15 @@ export default function MobileBottomBar() {
                           ].join(" "),
                     ].join(" ")}
                   >
-                    <Icon className={isCenter ? "h-6 w-6" : "h-5 w-5"} strokeWidth={2.1} />
+                    <Icon
+                      className={isCenter ? "h-6 w-6" : "h-5 w-5"}
+                      strokeWidth={2.1}
+                    />
                   </span>
 
                   <span
                     className={[
-                      "mt-1 text-center text-[10px] font-semibold tracking-[-0.01em] transition duration-300",
+                      "mt-1.5 text-center text-[10px] font-semibold tracking-[-0.01em] transition duration-300",
                       isCenter
                         ? "text-[#20457f]"
                         : isActive
