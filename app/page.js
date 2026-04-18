@@ -1,6 +1,7 @@
 import { connection } from "next/server";
 import CatalogSection from "./components/catalog-section";
 import Footer from "./components/footer";
+import FaqSection from "./components/faq-section";
 import Hero from "./components/hero";
 import MobileBottomBar from "./components/mobile-bottom-bar";
 import Navbar from "./components/navbar";
@@ -14,12 +15,13 @@ export default async function Home() {
   return (
     <>
       <Navbar />
-      <main id="home" className="pb-28 md:pb-0">
+      <main id="home" >
         <Hero />
         <CatalogSection />
         <PurchaseStepsSection />
         <ReviewsSection />
         <StockCarsSection />
+        <FaqSection />
       </main>
       <Footer />
       <MobileBottomBar />

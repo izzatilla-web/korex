@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Wrapper from "../wrapper";
-import Image from "next/image";
 
 const catalogLinks = [
   "Авто из Кореи",
