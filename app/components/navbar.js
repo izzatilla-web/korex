@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import RequestModal from "./request-modal";
 import Wrapper from "../wrapper";
 
 const topLinks = [
@@ -32,181 +33,192 @@ const socialLinks = [
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isRequestOpen, setIsRequestOpen] = useState(false);
 
   return (
-    <header className="w-full font-sans">
-      <div className="bg-[#00437c] text-white">
-        <Wrapper className="flex w-full items-center justify-between gap-6 py-2.5">
-          <div className="hidden items-center gap-2 text-[13px] font-medium lg:flex">
-            <GlobeIcon />
-            <span>Русский</span>
-            <ChevronDownIcon />
-          </div>
-
-          <nav className="hidden items-center gap-6 text-[13px] font-medium text-white/90 lg:flex xl:gap-10">
-            {topLinks.map((item) => (
-              <Link key={item} href="#" className="transition hover:text-white">
-                {item}
-              </Link>
-            ))}
-            <button
-              type="button"
-              className="inline-flex items-center gap-2 transition hover:text-white"
-            >
-              <span>Еще</span>
-              <ChevronDownIcon />
-            </button>
-          </nav>
-
-          <div className="hidden items-center gap-3 xl:flex">
-            {socialLinks.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                aria-label={item.label}
-                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/5 transition hover:bg-white/12"
-              >
-                {item.icon}
-              </Link>
-            ))}
-          </div>
-
-          <div className="flex min-h-14 w-full items-center justify-between lg:hidden">
-            <div className="flex items-center gap-2 text-sm font-medium">
+    <>
+      <header className="w-full font-sans">
+        <div className="bg-[#00437c] text-white">
+          <Wrapper className="flex w-full items-center justify-between gap-6 py-2.5">
+            <div className="hidden items-center gap-2 text-[13px] font-medium lg:flex">
               <GlobeIcon />
               <span>Русский</span>
+              <ChevronDownIcon />
             </div>
 
-            <button
-              type="button"
-              aria-label="Open menu"
-              aria-expanded={isOpen}
-              onClick={() => setIsOpen((value) => !value)}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/8"
-            >
-              <MenuIcon open={isOpen} />
-            </button>
-          </div>
-        </Wrapper>
-      </div>
-
-      <div className="border-b border-black/6 bg-white">
-        <Wrapper className="flex w-full items-center justify-between gap-6 py-4 lg:py-2">
-          <Link href="#" className="shrink-0">
-            <Image src="/logo.svg" alt="Korex logo" width={120} height={120} />
-          </Link>
-
-          <nav className="hidden flex-1 items-center justify-center gap-7 xl:flex xl:gap-10">
-            {mainLinks.map((item, index) => (
-              <Link
-                key={item}
-                href="#"
-                className={[
-                  "text-[13px] font-semibold tracking-[-0.02em] text-[#1c2430] transition hover:text-[#b14d2c]",
-                  index === 0 ? "text-[#b14d2c]" : "",
-                ].join(" ")}
-              >
-                {item}
-              </Link>
-            ))}
-          </nav>
-
-          <div className="shrink-0 items-center gap-2 lg:gap-4 flex">
-            <div className="hidden lg:flex h-10 w-10 items-center justify-center rounded-full bg-[#31384a] text-white shadow-[0_12px_30px_rgba(49,56,74,0.22)]">
-              <PhoneIcon />
-            </div>
-            <div>
-              <Link
-                href="tel:+821099260978"
-                className="block text-[18px] lg:text-[20px] font-semibold leading-none tracking-[-0.04em] text-[#1a2230]"
-              >
-                +82 10 9926 0978
-              </Link>
-              <span className="mt-1 block text-[13px] text-[#00437c]">
-                Обратный звонок
-              </span>
-            </div>
-          </div>
-
-          {/* <button
-            type="button"
-            aria-label="Open navigation"
-            aria-expanded={isOpen}
-            onClick={() => setIsOpen((value) => !value)}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 text-slate-900 xl:hidden"
-          >
-            <MenuIcon open={isOpen} dark />
-          </button> */}
-        </Wrapper>
-      </div>
-
-      {isOpen ? (
-        <div className="border-b border-slate-200 bg-white xl:hidden">
-          <Wrapper className="flex w-full flex-col gap-6 py-6">
-            <div className="grid gap-3">
-              {mainLinks.map((item, index) => (
-                <Link
-                  key={item}
-                  href="#"
-                  onClick={() => setIsOpen(false)}
-                  className={[
-                    "rounded-2xl border border-slate-200 px-4 py-3 text-base font-semibold text-slate-900 transition hover:border-[#b14d2c] hover:text-[#b14d2c]",
-                    index === 0
-                      ? "border-[#e6c9bc] bg-[#fff8f5] text-[#b14d2c]"
-                      : "",
-                  ].join(" ")}
-                >
-                  {item}
-                </Link>
-              ))}
-            </div>
-
-            <div className="grid gap-3 sm:grid-cols-2">
+            <nav className="hidden items-center gap-6 text-[13px] font-medium text-white/90 lg:flex xl:gap-10">
               {topLinks.map((item) => (
-                <Link
-                  key={item}
-                  href="#"
-                  onClick={() => setIsOpen(false)}
-                  className="text-sm font-medium text-slate-600 transition hover:text-slate-900"
-                >
+                <Link key={item} href="#" className="transition hover:text-white">
                   {item}
                 </Link>
               ))}
-            </div>
+              <button
+                type="button"
+                className="inline-flex items-center gap-2 transition hover:text-white"
+              >
+                <span>Еще</span>
+                <ChevronDownIcon />
+              </button>
+            </nav>
 
-            <div className="flex items-center gap-3 border-t border-slate-200 pt-5">
+            <div className="hidden items-center gap-3 xl:flex">
               {socialLinks.map((item) => (
                 <Link
                   key={item.label}
                   href={item.href}
                   aria-label={item.label}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-slate-700 transition hover:border-slate-900 hover:text-slate-900"
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/5 transition hover:bg-white/12"
                 >
                   {item.icon}
                 </Link>
               ))}
             </div>
 
-            <div className="flex items-center gap-4 rounded-[28px] bg-slate-50 px-4 py-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#31384a] text-white">
-                <PhoneIcon />
+            <div className="flex min-h-14 w-full items-center justify-between lg:hidden">
+              <div className="flex items-center gap-2 text-sm font-medium">
+                <GlobeIcon />
+                <span>Русский</span>
               </div>
-              <div>
-                <Link
-                  href="tel:+821099260978"
-                  className="block text-lg font-bold tracking-[-0.04em] text-slate-900"
-                >
-                  +82 10 9926 0978
-                </Link>
-                <span className="block text-sm text-[#3f74ac]">
-                  Обратный звонок
-                </span>
-              </div>
+
+              <button
+                type="button"
+                aria-label="Open menu"
+                aria-expanded={isOpen}
+                onClick={() => setIsOpen((value) => !value)}
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/8"
+              >
+                <MenuIcon open={isOpen} />
+              </button>
             </div>
           </Wrapper>
         </div>
-      ) : null}
-    </header>
+
+        <div className="border-b border-black/6 bg-white">
+          <Wrapper className="flex w-full items-center justify-between gap-4 py-4 lg:py-2">
+            <Link href="#" className="shrink-0">
+              <Image src="/logo.svg" alt="Korex logo" width={120} height={120} />
+            </Link>
+
+            <nav className="hidden flex-1 items-center justify-center gap-7 xl:flex xl:gap-10">
+              {mainLinks.map((item, index) => (
+                <Link
+                  key={item}
+                  href="#"
+                  className={[
+                    "text-[13px] font-semibold tracking-[-0.02em] text-[#1c2430] transition hover:text-[#b14d2c]",
+                    index === 0 ? "text-[#b14d2c]" : "",
+                  ].join(" ")}
+                >
+                  {item}
+                </Link>
+              ))}
+            </nav>
+
+            <div className="flex shrink-0 items-center gap-2 lg:gap-4">
+              <div className="hidden lg:flex h-10 w-10 items-center justify-center rounded-full bg-[#31384a] text-white shadow-[0_12px_30px_rgba(49,56,74,0.22)]">
+                <PhoneIcon />
+              </div>
+
+              <div className="hidden sm:block">
+                <Link
+                  href="tel:+821099260978"
+                  className="block text-[18px] font-semibold leading-none tracking-[-0.04em] text-[#1a2230] lg:text-[20px]"
+                >
+                  +82 10 9926 0978
+                </Link>
+                <span className="mt-1 block text-[13px] text-[#00437c]">
+                  Обратный звонок
+                </span>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setIsRequestOpen(true)}
+                className="inline-flex min-h-11 items-center justify-center rounded-full bg-[#2d67c8] px-4 py-2 text-[14px] font-semibold tracking-[-0.03em] text-white transition hover:bg-[#245ab3] sm:min-h-12 sm:px-6 sm:text-[15px]"
+              >
+                Оставить заявку
+              </button>
+            </div>
+          </Wrapper>
+        </div>
+
+        {isOpen ? (
+          <div className="border-b border-slate-200 bg-white xl:hidden">
+            <Wrapper className="flex w-full flex-col gap-6 py-6">
+              <div className="grid gap-3">
+                {mainLinks.map((item, index) => (
+                  <Link
+                    key={item}
+                    href="#"
+                    onClick={() => setIsOpen(false)}
+                    className={[
+                      "rounded-2xl border border-slate-200 px-4 py-3 text-base font-semibold text-slate-900 transition hover:border-[#b14d2c] hover:text-[#b14d2c]",
+                      index === 0
+                        ? "border-[#e6c9bc] bg-[#fff8f5] text-[#b14d2c]"
+                        : "",
+                    ].join(" ")}
+                  >
+                    {item}
+                  </Link>
+                ))}
+              </div>
+
+              <div className="grid gap-3 sm:grid-cols-2">
+                {topLinks.map((item) => (
+                  <Link
+                    key={item}
+                    href="#"
+                    onClick={() => setIsOpen(false)}
+                    className="text-sm font-medium text-slate-600 transition hover:text-slate-900"
+                  >
+                    {item}
+                  </Link>
+                ))}
+              </div>
+
+              <div className="flex items-center gap-3 border-t border-slate-200 pt-5">
+                {socialLinks.map((item) => (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    aria-label={item.label}
+                    className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-slate-700 transition hover:border-slate-900 hover:text-slate-900"
+                  >
+                    {item.icon}
+                  </Link>
+                ))}
+              </div>
+
+              <div className="flex flex-col gap-4 rounded-[28px] bg-slate-50 px-4 py-4">
+             
+
+                <div className="flex items-center gap-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#31384a] text-white">
+                    <PhoneIcon />
+                  </div>
+                  <div>
+                    <Link
+                      href="tel:+821099260978"
+                      className="block text-lg font-bold tracking-[-0.04em] text-slate-900"
+                    >
+                      +82 10 9926 0978
+                    </Link>
+                    <span className="block text-sm text-[#00437c]">
+                      Обратный звонок
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </Wrapper>
+          </div>
+        ) : null}
+      </header>
+
+      <RequestModal
+        open={isRequestOpen}
+        onClose={() => setIsRequestOpen(false)}
+      />
+    </>
   );
 }
 

@@ -47,11 +47,11 @@ const purchaseSteps = [
 
 export default function PurchaseStepsSection() {
   return (
-    <section className="relative overflow-hidden py-16 md:py-24 bg-white">
+    <section className="relative overflow-hidden bg-white py-16 md:py-24">
       <div className="absolute inset-x-0 bottom-0 h-[220px]" />
 
       <Wrapper className="relative">
-        <div className="max-w-[760px]">
+        <div className="w-full max-w-full sm:max-w-[760px]">
           <h2 className="text-[32px] font-unbounded uppercase leading-[0.96] tracking-[-0.07em] text-[#223d73] sm:text-[42px] lg:text-[56px]">
             КАК КУПИТЬ АВТОМОБИЛЬ
           </h2>
@@ -74,11 +74,11 @@ export default function PurchaseStepsSection() {
                     <Icon className="h-10 w-10" strokeWidth={1.9} />
                   </div>
 
-                  <h3 className="mt-5 max-w-[240px] text-[18px] font-bold uppercase leading-[1.15] tracking-[-0.04em] text-[#2a4275] sm:text-[19px]">
+                  <h3 className="mt-5 w-full max-w-full text-[18px] font-bold uppercase leading-[1.15] tracking-[-0.04em] text-[#2a4275] sm:max-w-[240px] sm:text-[19px]">
                     {step.title}
                   </h3>
 
-                  <p className="mt-3 max-w-[250px] text-[15px] leading-[1.45] text-[#667b9f] sm:text-[16px]">
+                  <p className="mt-3 w-full max-w-full text-[15px] leading-[1.45] text-[#667b9f] sm:max-w-[250px] sm:text-[16px]">
                     {step.description}
                   </p>
                 </div>

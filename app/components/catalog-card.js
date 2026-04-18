@@ -8,10 +8,10 @@ export default function CatalogCard({ car }) {
   const [activeImage, setActiveImage] = useState(0);
 
   return (
-    <article className="group min-w-[288px] snap-start md:min-w-[340px] lg:min-w-[360px] xl:min-w-[calc((100%-24px)/3)]">
-      <div className="flex h-full flex-col overflow-hidden rounded-[26px] border border-[#dfe7f2] bg-white/95 transition duration-300 hover:border-[#ccd8e7]">
+    <article className="group min-w-[274px] snap-start md:min-w-[340px] lg:min-w-[360px] xl:min-w-[calc((100%-24px)/3)]">
+      <div className="flex h-full flex-col overflow-hidden rounded-[24px] border border-[#dfe7f2] bg-white/95 transition duration-300 active:-translate-y-0.5 active:border-[#ccd8e7] md:rounded-[26px] md:hover:border-[#ccd8e7]">
         <div className={`relative overflow-hidden bg-gradient-to-b ${car.accent}`}>
-          <div className="relative h-[220px] overflow-hidden rounded-t-[22px] bg-[#e6ecf3] md:h-[250px]">
+          <div className="relative h-[212px] overflow-hidden rounded-t-[20px] bg-[#e6ecf3] md:h-[250px] md:rounded-t-[22px]">
             {car.images.map((image, index) => (
               <Image
                 key={image.src + index}
@@ -21,10 +21,10 @@ export default function CatalogCard({ car }) {
                 priority={index === 0}
                 sizes="(max-width: 640px) 90vw, (max-width: 1024px) 46vw, 31vw"
                 className={[
-                  "object-cover transition-all duration-300",
+                  "object-contain object-center transition-all duration-500 md:object-cover",
                   activeImage === index
                     ? "scale-100 opacity-100"
-                    : "pointer-events-none scale-[1.02] opacity-0",
+                    : "pointer-events-none scale-[1.01] opacity-0",
                 ].join(" ")}
               />
             ))}
@@ -45,12 +45,13 @@ export default function CatalogCard({ car }) {
             </div>
 
             <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(14,28,48,0.02)_0%,rgba(14,28,48,0.16)_100%)]" />
+            <div className="pointer-events-none absolute inset-x-6 bottom-3 h-10 rounded-full bg-[#9db8d8]/25 blur-2xl md:hidden" />
 
             <div className="absolute left-3 top-3 z-20 inline-flex rounded-full bg-white/88 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#294266] md:left-4 md:top-4">
               {car.badge}
             </div>
 
-            <div className="absolute inset-x-4 z-20 flex gap-2 md:inset-x-8 bottom-1">
+            <div className="absolute inset-x-4 bottom-1 z-20 flex gap-2 md:inset-x-8">
               {car.images.map((image, index) => (
                 <button
                   key={image.src + "-pagination"}
@@ -74,7 +75,7 @@ export default function CatalogCard({ car }) {
           </div>
         </div>
 
-        <div className="flex flex-1 flex-col px-3.5 pb-3.5 pt-3.5 md:px-5 md:pb-5 justify-between">
+        <div className="flex flex-1 flex-col justify-between px-3.5 pb-3.5 pt-3.5 md:px-5 md:pb-5">
           <div className="flex items-start justify-between gap-2.5">
             <div className="min-w-0">
               <h3 className="text-[18px] font-bold uppercase leading-[1.02] tracking-[-0.05em] text-[#152b4d] md:text-[24px]">
@@ -128,7 +129,7 @@ export default function CatalogCard({ car }) {
 
             <Link
               href="#"
-              className="mt-2.5 inline-flex min-h-10 w-full items-center justify-center rounded-[14px] border border-[#d5dfec] bg-[white] px-4 text-[14px] font-semibold !text-white transition hover:border-[#bccbdd] hover:bg-[#00437c] md:hidden hover:!text-[#00437c]"
+              className="mt-2.5 inline-flex min-h-10 w-full items-center justify-center rounded-[14px] border border-[#d5dfec] bg-white px-4 text-[14px] font-semibold  text-[#00437c] transition active:bg-[#eef4fb] md:hidden"
             >
               Подробнее
             </Link>
@@ -136,7 +137,7 @@ export default function CatalogCard({ car }) {
 
           <Link
             href="#"
-            className="mt-4 hidden min-h-12 items-center justify-center rounded-full border border-[#d5dfec] bg-[#00437c] px-6 text-[16px] font-semibold !text-white transition hover:border-[#bccbdd] hover:bg-[white] md:inline-flex hover:!text-[#00437c]"
+            className="mt-4 hidden min-h-12 items-center justify-center rounded-full border border-[#d5dfec] bg-[#00437c] px-6 text-[16px] font-semibold !text-white hover:!text-[#00437c] transition hover:border-[#bccbdd] hover:bg-white hover:text-[#00437c] md:inline-flex"
           >
             Подробнее
           </Link>
