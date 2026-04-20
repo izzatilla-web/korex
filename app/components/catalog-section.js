@@ -4,12 +4,12 @@ import Wrapper from "../wrapper";
 const catalogItems = [
   {
     title: "Корея",
-    img: "/genesis_2.png",
+    img: "/genesis_3.png",
     flag: "/kr.png",
   },
   {
     title: "Китай",
-    img: "/voyah_3.png",
+    img: "/voyah_2.png",
     flag: "/cn.png", 
   },
   {
@@ -51,7 +51,7 @@ export default function CatalogSection() {
                 </h3>
               </div>
 
-              <div className="pointer-events-none absolute bottom-0 right-0 z-10 h-[65%] w-[85%] sm:w-[75%] md:h-[60%] lg:h-[70%]">
+              <div className={`${index === 0 ? "md:bottom-[-50px] h-full bottom-[-30px]" : ""} pointer-events-none absolute bottom-0 right-0 z-10 h-[65%] w-[85%] sm:w-[75%] md:h-[60%] lg:h-[70%]`}>
                 <div className="relative h-full w-full">
                   <Image
                     src={item.img}
