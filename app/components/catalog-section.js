@@ -51,7 +51,7 @@ export default function CatalogSection() {
                 </h3>
               </div>
 
-              <div className={`${index === 0 ? "md:bottom-[-50px] h-full bottom-[-30px]" : ""} pointer-events-none absolute bottom-0 right-0 z-10 h-[65%] w-[85%] sm:w-[75%] md:h-[60%] lg:h-[70%]`}>
+              <div className={`${index === 0 ? "md:bottom-[-50px] h-full md:h-[60%] lg:h-[70%] bottom-[-30px]" : ""} pointer-events-none absolute bottom-0 right-0 z-10 h-[65%] w-[85%] sm:w-[75%] md:h-[60%] lg:h-[70%]`}>
                 <div className="relative h-full w-full">
                   <Image
                     src={item.img}
