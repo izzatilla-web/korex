@@ -60,10 +60,10 @@ export default function Navbar() {
 
             <div className="hidden lg:block">
               <Link
-                href="tel:+821099260978"
+                href="tel:+79098781898"
                 className="block text-[18px] font-semibold leading-none tracking-[-0.04em] text-[#1a2230] lg:text-[20px]"
               >
-                +82 10 9926 0978
+                +7 (909) 878-18-98
               </Link>
             </div>
 
@@ -178,10 +178,10 @@ export default function Navbar() {
                   </div>
                   <div>
                     <Link
-                      href="tel:+821099260978"
+                      href="tel:+79098781898"
                       className="block text-lg font-bold tracking-[-0.04em] text-slate-900"
                     >
-                      +82 10 9926 0978
+                      +7 (909) 878-18-98
                     </Link>
                     <span className="block text-sm text-[#00437c]">
                       Обратный звонок

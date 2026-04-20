@@ -84,10 +84,10 @@ export default function Footer() {
           <div>
             <FooterGroup title="Контакты">
               <Link
-                href="tel:+821099260978"
+                href="tel:+79098781898"
                 className="block text-[28px] font-semibold tracking-[-0.05em] text-white transition hover:text-white/86 sm:text-[34px]"
               >
-                +82 10 9926 0978
+                +7 (909) 878-18-98
               </Link>
               <Link
                 href="mailto:hello@korex.auto"
