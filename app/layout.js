@@ -12,8 +12,8 @@ const unbounded = Unbounded({
 });
 
 export const metadata = {
-  title: "Korex",
-  description: "SSR starter for Korex project",
+  title: "Avtostatus",
+  description: "SSR starter for Avtostatus project",
 };
 
 export default function RootLayout({ children }) {

@@ -4,19 +4,18 @@ import Wrapper from "../wrapper";
 const catalogItems = [
   {
     title: "Корея",
-    img: "/img-korea.webp",
+    img: "/genesis_2.png",
+    flag: "/kr.png",
   },
   {
     title: "Китай",
-    img: "/img-china.webp",
+    img: "/voyah_3.png",
+    flag: "/cn.png", 
   },
   {
     title: "Япония",
-    img: "/img-japan.webp",
-  },
-  {
-    title: "ОАЭ",
-    img: "/img-uae.webp",
+    img: "/crown.png",
+    flag: "/jp.png",
   },
 ];
 
@@ -28,25 +27,38 @@ export default function CatalogSection() {
           Каталоги автомобилей
         </h2>
 
-        <div className="mt-10 grid grid-cols-2 gap-2 md:mt-14 md:gap-5 xl:grid-cols-4">
-          {catalogItems.map((item) => (
+        <div className="mt-10 grid grid-cols-1 gap-4 md:mt-14 md:grid-cols-2 md:grid-rows-2 md:gap-5">
+          {catalogItems.map((item, index) => (
             <article
               key={item.title}
-              className="group relative rounded-[28px] bg-[#fbfcff] p-3.5 transition duration-300 active:-translate-y-0.5 active:bg-[#eef4fb] sm:rounded-[34px] sm:p-5 md:hover:bg-[#00437c] md:hover:shadow-[0_24px_60px_rgba(14,79,141,0.16)] lg:p-7"
+              className={`group relative overflow-hidden rounded-[28px] bg-[#fbfcff] p-6 transition-all duration-500 active:-translate-y-0.5 active:bg-[#eef4fb] sm:rounded-[34px] sm:p-8 md:hover:bg-[#00437c] md:hover:shadow-[0_24px_60px_rgba(14,79,141,0.16)] 
+                ${index === 0 ? "md:row-span-2 min-h-[200px] md:min-h-[450px]" : "min-h-[200px]"} 
+              `}
             >
-              <div className="relative z-10 flex min-h-[180px] flex-col justify-between sm:min-h-[220px] md:min-h-[300px]">
-                <h3 className="relative z-20 text-[26px] tracking-[-0.06em] text-[#1e2025] transition duration-300 sm:text-[40px] md:text-[44px] md:group-hover:text-white xl:text-[52px]">
+              <div className="absolute inset-0 z-0 opacity-0 transition-all duration-700 ease-in-out scale-110 group-hover:scale-100 group-hover:opacity-15">
+                <Image
+                  src={item.flag}
+                  alt={`${item.title} flag`}
+                  fill
+                  className="object-cover grayscale group-hover:grayscale-0"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#fbfcff] via-transparent to-transparent md:group-hover:from-[#00437c]" />
+              </div>
+
+              <div className="relative z-20">
+                <h3 className="max-w-[150px] text-[26px] font-medium leading-tight tracking-[-0.06em] text-[#1e2025] transition-colors duration-300 sm:text-[40px] md:group-hover:text-white lg:text-[48px]">
                   {item.title}
                 </h3>
+              </div>
 
-                <div className="pointer-events-none absolute inset-x-2 bottom-0 h-[140px] sm:inset-x-0 sm:h-[220px] md:h-[250px]">
-                  <div className="absolute inset-x-3 bottom-2 h-16 rounded-full bg-[#96b5e1]/20 blur-2xl sm:inset-x-8 sm:h-20" />
+              <div className="pointer-events-none absolute bottom-0 right-0 z-10 h-[65%] w-[85%] sm:w-[75%] md:h-[60%] lg:h-[70%]">
+                <div className="relative h-full w-full">
                   <Image
                     src={item.img}
                     alt={item.title}
                     fill
-                    className="h-full w-full object-contain object-right-bottom transition-transform duration-500 scale-[1.60] sm:scale-105 md:scale-115 md:group-hover:scale-[1.60]"
-                    sizes="(max-width: 768px) 50vw, (max-width: 1280px) 25vw, 20vw"
+                    className="object-contain object-right-bottom transition-transform duration-700 ease-out origin-bottom-right md:group-hover:scale-[1.20]"
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </div>
               </div>
