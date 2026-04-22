@@ -4,17 +4,17 @@ import Wrapper from "../wrapper";
 const catalogItems = [
   {
     title: "Корея",
-    img: "/genesis_3.png",
+    img: "/genesis.png",
     flag: "/kr.png",
   },
   {
     title: "Китай",
-    img: "/voyah_2.png",
+    img: "/voyah.png",
     flag: "/cn.png", 
   },
   {
     title: "Япония",
-    img: "/crown.png",
+    img: "/crown_toyota.png",
     flag: "/jp.png",
   },
 ];
