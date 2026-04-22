@@ -2,19 +2,44 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function CatalogCard({ car }) {
   const [activeImage, setActiveImage] = useState(0);
+  const router = useRouter();
+  const detailHref = `/cars/${car.slug ?? car.id}`;
+
+  function openDetails() {
+    router.push(detailHref);
+  }
+
+  function handleCardKeyDown(event) {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openDetails();
+    }
+  }
+
+  function stopCardNavigation(event, callback) {
+    event.stopPropagation();
+    callback();
+  }
 
   return (
-    <article className="group min-w-[300px] snap-start md:min-w-[340px] lg:min-w-[360px] xl:min-w-[calc((100%-24px)/3)]">
+    <article
+      role="link"
+      tabIndex={0}
+      onClick={openDetails}
+      onKeyDown={handleCardKeyDown}
+      className="group min-w-[300px] snap-start cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[#b6cff3] focus-visible:ring-offset-2 md:min-w-[340px] lg:min-w-[360px] xl:min-w-[calc((100%-24px)/3)]"
+    >
       <div className="flex h-full flex-col overflow-hidden rounded-[24px] border border-[#dfe7f2] bg-white/95 transition duration-300 active:-translate-y-0.5 active:border-[#ccd8e7] md:rounded-[26px] md:hover:border-[#ccd8e7]">
         <div className={`relative overflow-hidden bg-gradient-to-b ${car.accent}`}>
           <div className="relative h-[212px] overflow-hidden rounded-t-[20px] bg-[#e6ecf3] md:h-[250px] md:rounded-t-[22px]">
             {car.images.map((image, index) => (
               <Image
-                key={image.src + index}
+                key={image.alt + index}
                 src={image.src}
                 alt={image.alt}
                 fill
@@ -32,13 +57,13 @@ export default function CatalogCard({ car }) {
             <div className="absolute inset-0 z-10 flex">
               {car.images.map((image, index) => (
                 <button
-                  key={image.src + "-zone"}
+                  key={image.alt + "-zone"}
                   type="button"
                   aria-label={`${car.title}: показать фото ${index + 1}`}
                   aria-pressed={activeImage === index}
                   onMouseEnter={() => setActiveImage(index)}
                   onFocus={() => setActiveImage(index)}
-                  onClick={() => setActiveImage(index)}
+                  onClick={(event) => stopCardNavigation(event, () => setActiveImage(index))}
                   className="h-full flex-1 cursor-pointer"
                 />
               ))}
@@ -54,13 +79,13 @@ export default function CatalogCard({ car }) {
             <div className="absolute inset-x-4 bottom-1 z-20 flex gap-2 md:inset-x-8">
               {car.images.map((image, index) => (
                 <button
-                  key={image.src + "-pagination"}
+                  key={image.alt + "-pagination"}
                   type="button"
                   aria-label={`${car.title}: показать фото ${index + 1}`}
                   aria-pressed={activeImage === index}
                   onMouseEnter={() => setActiveImage(index)}
                   onFocus={() => setActiveImage(index)}
-                  onClick={() => setActiveImage(index)}
+                  onClick={(event) => stopCardNavigation(event, () => setActiveImage(index))}
                   className="relative z-30 flex-1 cursor-pointer py-2"
                 >
                   <span
@@ -102,7 +127,7 @@ export default function CatalogCard({ car }) {
               <div className="flex flex-col gap-2.5 lg:flex-row lg:items-end lg:justify-between lg:gap-4">
                 <div>
                   <p className="text-[11px] uppercase tracking-[0.14em] text-[#7d8eab] md:text-sm md:tracking-normal">
-                    Цена в Китае
+                    Цена в стране
                   </p>
                   <p className="mt-0.5 text-[20px] font-semibold tracking-[-0.05em] text-[#e15f4c] md:mt-1 md:text-[25px]">
                     {car.priceChina}
@@ -113,7 +138,7 @@ export default function CatalogCard({ car }) {
 
                 <div>
                   <p className="text-[11px] uppercase tracking-[0.14em] text-[#7d8eab] md:text-sm md:tracking-normal">
-                    Цена с доставкой
+                    Цена под ключ
                   </p>
                   <p className="mt-0.5 text-[17px] font-semibold tracking-[-0.04em] text-[#294266] md:mt-1 md:text-[21px]">
                     {car.priceLocal}
@@ -128,16 +153,18 @@ export default function CatalogCard({ car }) {
             </div>
 
             <Link
-              href="#"
-              className="mt-2.5 inline-flex min-h-10 w-full items-center justify-center rounded-[14px] border border-[#d5dfec] bg-white px-4 text-[14px] font-semibold  text-[#00437c] transition active:bg-[#eef4fb] md:hidden"
+              href={detailHref}
+              onClick={(event) => event.stopPropagation()}
+              className="mt-2.5 inline-flex min-h-10 w-full items-center justify-center rounded-[14px] border border-[#d5dfec] bg-white px-4 text-[14px] font-semibold text-[#00437c] transition active:bg-[#eef4fb] md:hidden"
             >
               Подробнее
             </Link>
           </div>
 
           <Link
-            href="#"
-            className="mt-4 hidden min-h-12 items-center justify-center rounded-full border border-[#d5dfec] bg-[#00437c] px-6 text-[16px] font-semibold !text-white hover:!text-[#00437c] transition hover:border-[#bccbdd] hover:bg-white hover:text-[#00437c] md:inline-flex"
+            href={detailHref}
+            onClick={(event) => event.stopPropagation()}
+            className="mt-4 hidden min-h-12 items-center justify-center rounded-full border border-[#d5dfec] bg-[#00437c] px-6 text-[16px] font-semibold !text-white transition hover:border-[#bccbdd] hover:bg-white hover:!text-[#00437c] md:inline-flex"
           >
             Подробнее
           </Link>

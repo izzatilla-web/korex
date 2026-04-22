@@ -14,7 +14,7 @@ const catalogItems = [
   },
   {
     title: "Япония",
-    img: "/crown_toyota.png",
+    img: "/crown.png",
     flag: "/jp.png",
   },
 ];

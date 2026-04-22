@@ -1,87 +1,9 @@
 "use client";
 
 import { useRef } from "react";
+import { stockCars } from "../../data/stock-cars";
 import Wrapper from "../wrapper";
 import CatalogCard from "./catalog-card";
-
-const stockCars = [
-  {
-    id: "toyota-corolla-cross",
-    badge: "В наличии",
-    title: "Toyota Corolla Cross",
-    trim: "Hybrid MID",
-    year: "2022",
-    engine: "171 л.с.",
-    mileage: "32 379 км",
-    gearbox: "CVT",
-    priceChina: "¥ 63 000",
-    priceLocal: "от 2 931 114 ₽",
-    accent: "from-[#edf3f9] to-[#f8fbfd]",
-    images: [
-      { src: "/img-korea.webp", alt: "Toyota Corolla Cross rear view" },
-      { src: "/img-china.webp", alt: "Toyota Corolla Cross front view" },
-      { src: "/img-japan.webp", alt: "Toyota Corolla Cross side view" },
-      { src: "/img-uae.webp", alt: "Toyota Corolla Cross interior preview" },
-    ],
-  },
-  {
-    id: "hyundai-elantra",
-    badge: "В пути",
-    title: "Hyundai Elantra",
-    trim: "MID+",
-    year: "2022",
-    engine: "115 л.с.",
-    mileage: "8 544 км",
-    gearbox: "CVT",
-    priceChina: "¥ 95 800",
-    priceLocal: "от 1 557 751 ₽",
-    accent: "from-[#eff4f9] to-[#fbfcfe]",
-    images: [
-      { src: "/img-china.webp", alt: "Hyundai Elantra front view" },
-      { src: "/img-korea.webp", alt: "Hyundai Elantra rear view" },
-      { src: "/img-uae.webp", alt: "Hyundai Elantra profile view" },
-      { src: "/img-japan.webp", alt: "Hyundai Elantra detail view" },
-    ],
-  },
-  {
-    id: "volkswagen-tayron-black",
-    badge: "Топ",
-    title: "Volkswagen Tayron",
-    trim: "TOP",
-    year: "2022",
-    engine: "150 л.с.",
-    mileage: "30 490 км",
-    gearbox: "7-DCT",
-    priceChina: "¥ 180 500",
-    priceLocal: "от 2 496 963 ₽",
-    accent: "from-[#eef3f8] to-[#f9fbfd]",
-    images: [
-      { src: "/img-japan.webp", alt: "Volkswagen Tayron front angle" },
-      { src: "/img-uae.webp", alt: "Volkswagen Tayron front view" },
-      { src: "/img-china.webp", alt: "Volkswagen Tayron rear angle" },
-      { src: "/img-korea.webp", alt: "Volkswagen Tayron cabin view" },
-    ],
-  },
-  {
-    id: "volkswagen-tayron-white",
-    badge: "Готов",
-    title: "Volkswagen Tayron",
-    trim: "TOP",
-    year: "2022",
-    engine: "150 л.с.",
-    mileage: "25 076 км",
-    gearbox: "7-DCT",
-    priceChina: "¥ 177 500",
-    priceLocal: "от 2 463 453 ₽",
-    accent: "from-[#f0f4f8] to-[#fbfcfe]",
-    images: [
-      { src: "/img-uae.webp", alt: "Volkswagen Tayron white front view" },
-      { src: "/img-japan.webp", alt: "Volkswagen Tayron grille detail" },
-      { src: "/img-korea.webp", alt: "Volkswagen Tayron rear quarter view" },
-      { src: "/img-china.webp", alt: "Volkswagen Tayron dashboard detail" },
-    ],
-  },
-];
 
 export default function StockCarsSection() {
   const railRef = useRef(null);
@@ -111,9 +33,7 @@ export default function StockCarsSection() {
               Авто в наличии
             </h2>
             <p className="mt-4 w-full max-w-full text-[15px] leading-7 text-[#677895] sm:max-w-[560px] sm:text-[16px]">
-              Аккуратная подборка автомобилей с понятной ценой и быстрым
-              выкупом. Блок сделали спокойнее и чище, чтобы он лучше сочетался
-              с текущим стилем сайта.
+              Подобрали витрину с понятными карточками и быстрым переходом в детальную страницу каждой машины.
             </p>
           </div>
 
@@ -167,9 +87,7 @@ function SectionArrow({ direction, label, onClick }) {
     >
       <svg
         viewBox="0 0 24 24"
-        className={`h-5 w-5 fill-none stroke-current ${
-          direction === "next" ? "" : "rotate-180"
-        }`}
+        className={`h-5 w-5 fill-none stroke-current ${direction === "next" ? "" : "rotate-180"}`}
       >
         <path
           d="M5 12h14M13 6l6 6-6 6"
